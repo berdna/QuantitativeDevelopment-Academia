@@ -1,5 +1,3 @@
-#include <iostream>
-using namespace std;
 Managing Arrays and Strings
 
 An array is a collection of elements
@@ -163,4 +161,38 @@ int main ()
 	 cout << “Last element in array: “; 
 	 cout << DynArrNums[DynArrNums.size() - 1] << endl; 
 	 return 0; 
+}
+
+C-style strings are a special case of an array of characters. You have already seen some examples of C-style strings in the form of string literals that you have been writing into your code: std::cout << “Hello World”;
+This is equivalent to using the array declaration: char SayHello[] = {‘H’, ‘e’, ‘l’, ‘l’, ‘o’, ‘ ‘, ‘W’, ‘o’, ‘r’, ‘l’, ‘d’, ‘\0’}; std::cout << SayHello << std::endl;
+Note that the last character in the array is a null character ‘\0’. This is also called the string-terminating character because it tells the compiler that the string has ended. Such C-style strings are a special case of character arrays in that the last character always precedes the null-terminator ‘\0’. When you embed a string literal in your code, the compiler does the job of adding a ‘\0’ after it.
+If you inserted ‘\0’ anywhere in the middle of the array, it would not change the size of the array; it would only mean that string-processing using the array as input would stop at that point. 
+
+C++ String 
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	string Greetings ("Hello std::string!");
+	cout << Greetings << endl;
+
+	cout << "Enter a line of text :" << endl;
+	string FirstLine;
+	getline(cin, FirstLine);
+
+	cout <<  " Enter another:" << endl;
+	string SecLine;
+	getline(cin, SecLine);
+
+	cout << "Result of concatenation: " << endl;
+	string Concat = FirstLine + " " + SecLine;
+	cout << Concat << endl;
+
+	cout << "Length of concat string: " << Concat.length() << endl;
+
+	return 0;
 }
